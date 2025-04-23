@@ -56,3 +56,12 @@
     color: rgb(255, 255, 255);
     text-shadow: rgb(87, 87, 87) 0px 0px 8px;
 }
+
+.icon-logout {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 40px;
+    height: 40px;
+    cursor:pointer;
+  }
