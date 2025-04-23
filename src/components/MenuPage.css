@@ -37,14 +37,6 @@
     display: block;
 }
 
-.menu-title {
-    font-size: 30px;
-    font-weight: 650;
-    margin-bottom: 20px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    text-shadow: rgb(87, 87, 87) 0px 0px 8px;
-}
 
 .icon-logout{
     position: absolute;
@@ -56,3 +48,11 @@
     display: block;
 }
 
+.bienvenida {
+    font-size: 25px;
+    font-weight: 650;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(87, 87, 87) 0px 0px 8px;
+}

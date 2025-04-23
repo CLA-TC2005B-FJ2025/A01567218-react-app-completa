@@ -13,12 +13,10 @@ function MenuPage() {
 
   return (
     <div>
-      <div className="menu-container"></div>
-        <img src="/img/logoECOA.png" alt="Menu" className="logo-monos" />
-        <img src="/img/hplogo.png" alt="Menu" className="logo-hp" />
-        <img src="/img/logout.png" alt="Menu" className="icon-logout" />
-      <h2>Menu</h2>
-      {user && <p>Bienvenido, {user}!</p>}
+      <div className="menu-container">
+      <img src="/img/logoECOA.png" alt="Login" className="logo-monos" />
+      <img src="/img/hplogo.png" alt="Login" className="logo-hp" />
+      {user && <h1 className="bienvenida">Bienvenido, {user}</h1>}
       <ul>
         <li><a href="/listapersonajes">Lista todos los personajes</a></li>
         <li><a href="/crearpersonaje">Crear personaje</a></li>
@@ -26,6 +24,7 @@ function MenuPage() {
         <li><a href="/eliminarpersonaje">Eliminar personaje</a></li>
       </ul>
       <button onClick={handleLogout}>Logout</button>
+    </div>
     </div>
   );
 }
