@@ -6,7 +6,7 @@
     flex-direction: column; /* Elementos uno debajo del otro */
     align-items: center; /* Centra horizontalmente */
     justify-content: start; /* Elementos empiezan desde arriba */
-    padding-top: 38px;
+    padding-top: 50px;
 
     font-family: 'Poppins', sans-serif;
     line-height: 1.05;
@@ -15,20 +15,29 @@
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* o el ancho que quieras */
+    background-color: white; /* opcional, para que no sea transparente */
+    z-index: 1000; /* asegúrate que esté por encima del resto */
+    padding: 10px;
+
   }
 
 .logo-monos {
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 30px;
     width: 84px;
     height: 85px;
     margin: 0 auto 20px;
     display: block;
+
 }
 
 .logo-hp {
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 110px;
     width: 175px;
@@ -39,7 +48,7 @@
 
 
 .icon-logout{
-    position: absolute;
+    position: fixed;
     top: 54px;
     right: 30px;
     width: 50px;
@@ -49,7 +58,7 @@
 }
 
 .bienvenida {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 650;
     margin-bottom: 20px;
     text-align: center;
@@ -58,18 +67,18 @@
 }
 
 .icon-logout {
-    position: absolute;
-    top: 50px;
-    right: 90px;
-    width: 60px;
-    height: 60px;
+    position: fixed;
+    top: 55px;
+    right: 100px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
   }
 
 .profile-icon {
-    position: absolute;
+    position: fixed;
     top: 50px;
-    right: 30px;
+    right: 25px;
     width: 60px;
     height: 60px;
     cursor: pointer;
