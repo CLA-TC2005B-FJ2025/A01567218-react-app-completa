@@ -1,0 +1,23 @@
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #292b2c;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 12px 0;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 30px;
+  }

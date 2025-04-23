@@ -16,6 +16,7 @@ function MenuPage() {
       <div className="menu-container">
       <img src="/img/logoECOA.png" alt="Login" className="logo-monos" />
       <img src="/img/hplogo.png" alt="Login" className="logo-hp" />
+      <img src="/img/profileicon.png" alt="icono usuario" className="profile-icon" />
       {user && <h1 className="bienvenida">Bienvenido, {user}</h1>}
       <ul>
         <li><a href="/listapersonajes">Lista todos los personajes</a></li>
