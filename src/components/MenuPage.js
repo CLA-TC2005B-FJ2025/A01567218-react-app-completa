@@ -25,7 +25,7 @@ function MenuPage() {
         <li><a href="/eliminarpersonaje">Eliminar personaje</a></li>
       </ul>
       <img
-      src="/img/logout.png"
+      src="/img/logouticon.png"
       alt="Cerrar sesión"
       className="icon-logout"
       onClick={handleLogout}
