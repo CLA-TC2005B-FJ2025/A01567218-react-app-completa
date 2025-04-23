@@ -1,0 +1,139 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.05;
+
+    background-image: url('/public/img/pibg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    height: 420px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15), 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.login-card h2 {
+    margin-bottom: 37px;
+    color: #333;
+    text-align: center;
+}
+
+.login-card label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #555;
+
+}
+
+.login-card input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #F0EDFF;
+    border: 0cm solid #ccc;
+    border-radius: 11px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+
+}
+
+.login-card button {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    padding: 11px;
+    background: linear-gradient(to right, #8c4eff, #5400fc);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+.login-card button:hover {
+    background-color: #1a5ed9;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.logo { /*rosa*/
+    width: 80px;
+    height: 80 px;
+    margin: 3px auto 25px;
+    display: block;
+}
+
+.logo1 { /*tec*/
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 185px;
+    height: 50px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.logo2 { /*hp*/
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 155px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.input-con-icon {
+    display: flex;
+    align-items: center;
+    background-color: #F0EDFF;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-bottom: 11px;
+    width: 100%;
+    height: 58px;
+    box-sizing: border-box;
+}
+
+.input-con-icon img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: block;
+}
+
+.input-con-icon input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
+import './LoginPage.css';
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -27,34 +29,47 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Nombre de usuario:</label>
-          <input
+    <div className="login-container">
+          <img src="/img/logotec.png" alt="Login" className="logo1" />
+          <img src="/img/hplogo.png" alt="Login" className="logo2" />
+      <div className="login-card">
+      <img src="/img/logoECOA.png" alt="Login" className="logo" />
+        <h2>Bienvenido al Sistema de Respuestas de la ECOA</h2>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div>
+          <div className="input-con-icon">
+            <img src="/img/usericon.png" alt="icono usuario" />
+            <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Usuario"
             required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
+            />
+          </div>
+          </div>
+          <div>
+          <div className="input-con-icon">
+            <img src="/img/pwicon.png" alt="icono contraseña" />
+            <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Contraseña"
             required
-          />
-        </div>
-        <button type="submit">Iniciar sesión</button>
-      </form>
+            />
+          </div>
+
+          </div>
+          <button type="submit">Ingresar</button>
+        </form>
+      </div>
     </div>
   );
+  
 }
 
 export default LoginPage;
