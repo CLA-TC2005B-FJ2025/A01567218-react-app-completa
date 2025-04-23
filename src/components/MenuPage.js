@@ -13,6 +13,10 @@ function MenuPage() {
 
   return (
     <div>
+      <div className="menu-container"></div>
+        <img src="/img/logoECOA.png" alt="Menu" className="logo-monos" />
+        <img src="/img/hplogo.png" alt="Menu" className="logo-hp" />
+        <img src="/img/logout.png" alt="Menu" className="icon-logout" />
       <h2>Menu</h2>
       {user && <p>Bienvenido, {user}!</p>}
       <ul>
