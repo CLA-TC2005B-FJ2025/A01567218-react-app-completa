@@ -1,28 +1,16 @@
 .menu-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: right;
     height: 100vh;
-    flex-direction: column; /* Elementos uno debajo del otro */
-    align-items: center; /* Centra horizontalmente */
-    justify-content: start; /* Elementos empiezan desde arriba */
-    padding-top: 50px;
 
     font-family: 'Poppins', sans-serif;
     line-height: 1.05;
 
     background-image: url('/public/img/BGmain.png');
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* o el ancho que quieras */
-    background-color: white; /* opcional, para que no sea transparente */
-    z-index: 1000; /* asegúrate que esté por encima del resto */
-    padding: 10px;
-
   }
 
   .dashboard-header {

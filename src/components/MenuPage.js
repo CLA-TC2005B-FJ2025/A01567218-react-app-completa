@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './MenuPage.css';
 
 function MenuPage() {
@@ -13,8 +13,8 @@ function MenuPage() {
   };
 
   return (
-    <div className="menu-container">
-      {/* NUEVO HEADER */}
+    <div>
+      <div className="menu-container"> 
       <header className="dashboard-header">
         <div className="left-logos">
           <img src="/img/logoECOA.png" alt="ECOA logo" className="logo-monos" />
@@ -31,17 +31,17 @@ function MenuPage() {
           />
         </div>
       </header>
-  
-      {/* El resto de tu dashboard */}
+
+      {/* Puedes quitar este menú si ya usas Sidebar */}
       <ul className="dashboard-menu">
-        <li><a href="/listapersonajes">Lista todos los personajes</a></li>
-        <li><a href="/crearpersonaje">Crear personaje</a></li>
-        <li><a href="/actualizarpersonaje">Actualizar personaje</a></li>
-        <li><a href="/eliminarpersonaje">Eliminar personaje</a></li>
+        <li><Link to="/listapersonajes">Lista todos los personajes</Link></li>
+        <li><Link to="/crearpersonaje">Crear personaje</Link></li>
+        <li><Link to="/actualizarpersonaje">Actualizar personaje</Link></li>
+        <li><Link to="/eliminarpersonaje">Eliminar personaje</Link></li>
       </ul>
+    </div>
     </div>
   );
 }
-
 
 export default MenuPage;
