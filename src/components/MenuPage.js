@@ -13,27 +13,35 @@ function MenuPage() {
   };
 
   return (
-    <div>
-      <div className="menu-container">
-      <img src="/img/logoECOA.png" alt="Login" className="logo-monos" />
-      <img src="/img/hplogo.png" alt="Login" className="logo-hp" />
-      <img src="/img/profileicon.png" alt="icono usuario" className="profile-icon" />
-      {user && <h1 className="bienvenida">Bienvenido, {user}</h1>}
-      <ul>
+    <div className="menu-container">
+      {/* NUEVO HEADER */}
+      <header className="dashboard-header">
+        <div className="left-logos">
+          <img src="/img/logoECOA.png" alt="ECOA logo" className="logo-monos" />
+          <img src="/img/hplogo.png" alt="HP logo" className="logo-hp" />
+        </div>
+        {user && <h1 className="bienvenida">Bienvenido, {user}</h1>}
+        <div className="right-profile">
+          <img src="/img/profileicon.png" alt="icono usuario" className="profile-icon" />
+          <img
+            src="/img/logouticon.png"
+            alt="Cerrar sesión"
+            className="icon-logout"
+            onClick={handleLogout}
+          />
+        </div>
+      </header>
+  
+      {/* El resto de tu dashboard */}
+      <ul className="dashboard-menu">
         <li><a href="/listapersonajes">Lista todos los personajes</a></li>
         <li><a href="/crearpersonaje">Crear personaje</a></li>
         <li><a href="/actualizarpersonaje">Actualizar personaje</a></li>
         <li><a href="/eliminarpersonaje">Eliminar personaje</a></li>
       </ul>
-      <img
-      src="/img/logouticon.png"
-      alt="Cerrar sesión"
-      className="icon-logout"
-      onClick={handleLogout}
-      />
-    </div>
     </div>
   );
 }
+
 
 export default MenuPage;
