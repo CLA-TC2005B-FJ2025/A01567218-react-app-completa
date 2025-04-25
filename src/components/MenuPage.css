@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: right;
     height: 100vh;
+  
 
     font-family: 'Poppins', sans-serif;
     line-height: 1.05;
@@ -11,7 +12,16 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Asegúrate de que el fondo esté detrás de otros elementos */
+
   }
+
 
   .dashboard-header {
     position: fixed;
@@ -54,7 +64,7 @@
   .dashboard-menu a {
     font-size: 18px;
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     text-shadow: 1px 1px 2px black;
   }

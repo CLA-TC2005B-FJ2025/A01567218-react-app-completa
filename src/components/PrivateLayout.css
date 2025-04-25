@@ -1,0 +1,10 @@
+/* src/components/PrivateLayout.css */
+.private-layout {
+    display: flex;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+  }
+  
