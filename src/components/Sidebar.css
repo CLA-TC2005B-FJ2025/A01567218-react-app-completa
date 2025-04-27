@@ -1,14 +1,13 @@
-/* Sidebar general */
 #sidebar {
-  width: 170px;
-  background-color: rgba(255, 255, 255, 0);
+  width: 160px;
+  background-color: rgba(255, 0, 187, 0);
   padding: 18px;
   height: 100vh;
   position: fixed;
-  top: 0;
+  top: 90px;
   left: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: slideIn 0.8s ease forwards; /* Animación de entrada */
+  animation: slideIn 0.8s ease forwards;
 }
 
 /* animación */
@@ -51,6 +50,7 @@
   margin-left: 0;
   border-radius: 8px;
   line-height: 20px;
+  padding-left: 3px;;
 }
 
 .sidebar-icon {
@@ -79,9 +79,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transform: translateX(4px) scale(1.05);
   border-radius: 12px;
+  width: 85%;
 }
 
-/*ícono de link activo */
+/*icon de link activo */
 .sidebar-link.active .text-xl {
   color: #ffffff;
   transform: scale(1.2);

@@ -1,0 +1,85 @@
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(90deg, #3b82f6, #6366f1); /* degradado azul/morado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    animation: slideInT 0.8s ease forwards;
+  }
+  
+  @keyframes slideInT {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+  
+  .logomonos-topbar{
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+  }
+
+  .logohp-topbar{
+    height: 110px;
+    width: 110px;
+    object-fit: contain;
+  }
+  
+  .topbar-center {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .bienvenida {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+  
+  .icon-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .topbar-icon {
+    font-size: 28px;
+    color: white;
+    
+  }
+
+

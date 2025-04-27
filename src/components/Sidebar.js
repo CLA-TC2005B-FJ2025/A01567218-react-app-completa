@@ -17,7 +17,6 @@ function Sidebar() {
 
   return (
     <div id="sidebar" className="slide-in">
-      <img src="/img/logomonos.png" alt="Logo ECOA" className="logo-jiji" />
       <ul className="space-y-2 mt-6">
         <li>
           <Link to="/menu" className={`sidebar-link ${location.pathname === '/menu' ? 'active' : ''}`}>
