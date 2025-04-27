@@ -35,7 +35,7 @@ function LoginPage() {
     {showVideo ? (
       <div className="video-container">
         <video
-          src="/img/videoecoa.mp4"
+          src="/img/videointroecoa.mp4"
           autoPlay
           muted
           onEnded={() => navigate('/menu')}
