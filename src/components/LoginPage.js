@@ -11,6 +11,7 @@ function LoginPage() {
   const [error, setError] = useState('');
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showVideo, setShowVideo] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,7 +20,7 @@ function LoginPage() {
     try {
       const success = await login(username, password);
       if (success) {
-        navigate('/menu');
+        setShowVideo(true); // Mostrar video
       } else {
         setError('Usuario o password incorrectos');
       }
@@ -31,46 +32,54 @@ function LoginPage() {
 
   return (
     <div className="login-container">
-          <img src="/img/logotec.png" alt="Login" className="logo1" />
-          <img src="/img/hplogo.png" alt="Login" className="logo2" />
-      <div className="login-card">
-      <img src="/img/logoECOA.png" alt="Login" className="logo" />
-        <h2>Bienvenido al Sistema de Respuestas de la ECOA</h2>
-        {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div>
-          <div className="input-con-icon">
-            <img src="/img/usericon.png" alt="icono usuario" />
-            <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Usuario"
-            required
-            />
-          </div>
-          </div>
-          <div>
-          <div className="input-con-icon">
-            <img src="/img/pwicon.png" alt="icono contraseña" />
-            <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
-            required
-            />
-          </div>
-
-          </div>
-          <button type="submit">Ingresar</button>
-        </form>
+    {showVideo ? (
+      <div className="video-container">
+        <video
+          src="/img/videoecoa.mp4"
+          autoPlay
+          muted
+          onEnded={() => navigate('/menu')}
+          className="intro-video"
+        />
       </div>
-    </div>
-  );
-  
+    ) : (
+      <>
+        <img src="/img/logotec.png" alt="Login" className="logo1" />
+        <img src="/img/hplogo.png" alt="Login" className="logo2" />
+        <div className="login-card">
+          <img src="/img/logoECOA.png" alt="Login" className="logo" />
+          <h2>Bienvenido al Sistema de Respuestas de la ECOA</h2>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="input-con-icon">
+              <img src="/img/usericon.png" alt="icono usuario" />
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Usuario"
+                required
+              />
+            </div>
+            <div className="input-con-icon">
+              <img src="/img/pwicon.png" alt="icono contraseña" />
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Contraseña"
+                required
+              />
+            </div>
+            <button type="submit">Ingresar</button>
+          </form>
+        </div>
+      </>
+    )}
+  </div>
+);
 }
 
 export default LoginPage;

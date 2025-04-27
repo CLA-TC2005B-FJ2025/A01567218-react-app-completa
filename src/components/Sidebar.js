@@ -1,9 +1,7 @@
-// src/components/Sidebar.js
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaHome, FaList, FaPlusCircle, FaEdit, FaTrash, FaSignOutAlt, FaFileUpload,FaAddressBook, FaFileAlt } from 'react-icons/fa';
 import './Sidebar.css';
-import { IoPersonAdd } from "react-icons/io5";
 import { HiUserAdd, HiDocumentAdd, HiClipboardList } from "react-icons/hi";
 import { HiHome } from "react-icons/hi2";
 
