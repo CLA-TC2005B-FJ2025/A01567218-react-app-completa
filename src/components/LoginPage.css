@@ -67,9 +67,14 @@
     font-weight: 600;
     margin-top: 40px;
 }
+.login-card button:active {
+    transform: scale(0.95);
+    background: linear-gradient(to right, #7a3ee0, #3c00c7);
+}
 
 .login-card button:hover {
     background-color: #1a5ed9;
+    transform: scale(0.95);
 }
 
 .error-message {

@@ -1,59 +1,113 @@
+/* Sidebar general */
 #sidebar {
-    width: 150px;
-    background-color: #ffffff00;
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0;
-    box-shadow: #00000078;
-  }
-  
-  #sidebar h2 {
-    margin-bottom: 20px;
-  }
-  
-  #sidebar ul {
-    list-style: none;
-    padding: 0px;
-  }
-  
-  #sidebar ul li {
-    margin-bottom: 10px;
-  }
-  
-  #sidebar ul li a, 
-  #sidebar ul li button {
-    text-decoration: none;
-    color: #ffffff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px 0;
-    display: block;
-    text-align: left;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    transition: background-color 0.3s;
-    margin-left: 70px;
+  width: 170px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 18px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease forwards; /* Animación de entrada */
 }
 
-.logo-jiji{
-    position: relative;
-    left: 20px;
-    width: 84px;
-    height: 85px;
-    right: 80px;
-    top: 10px;
-    margin-bottom: 50px;
+/* animación */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-
-.logo-hp1{
-    position: relative;
-    left: 0px;
-    width: 175px;
-    height: 95px;
-    right: 80px;
-
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  margin-bottom: 15px;
+}
+
+#sidebar ul li a, 
+#sidebar ul li button {
+  text-decoration: none;
+  color: #ffffff; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 15px;
+  display: flex; 
+  align-items: center; /*icono y text*/
+  gap: 15px; /*espacio entre ícono y text*/
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-left: 0;
+  border-radius: 8px;
+  line-height: 20px;
+}
+
+.sidebar-icon {
+  font-size: 60px; 
+}
+
+#sidebar ul li a:hover, 
+#sidebar ul li button:hover {
+  color: #0062ff;
+  background-color: #bfdbfe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateX(4px) scale(1.05);
+}
+
+/*al picarle */
+#sidebar ul li a:active, 
+#sidebar ul li button:active {
+  transform: scale(0.95);
+}
+
+/*link activo */
+.sidebar-link.active {
+  background-color: #2f00ff96 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateX(4px) scale(1.05);
+  border-radius: 12px;
+}
+
+/*ícono de link activo */
+.sidebar-link.active .text-xl {
+  color: #ffffff;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.logo-jiji {
+  position: relative;
+  left: 20px;
+  width: 84px;
+  height: 85px;
+  top: 10px;
+  margin-bottom: 50px;
+}
+
+.logo-hp1 {
+  position: relative;
+  left: 0;
+  width: 175px;
+  height: 95px;
+}
+
+.add-icon {
+font-size: 50px;
+}
+
+.home-icon {
+  font-size: 35px;
+}
