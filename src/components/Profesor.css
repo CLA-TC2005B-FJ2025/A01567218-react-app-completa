@@ -1,0 +1,82 @@
+.resultados-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    padding: 120px 40px 40px 220px;
+  }
+  
+  .grafica-container {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    gap: 30px;
+  }
+  
+  .grafica-izquierda {
+    flex: 2;
+  }
+  
+  .grafica-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .grupo-select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .estadisticas {
+    flex: 1;
+    background: #e0e7ff;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .estadisticas h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .estadisticas p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+
+  .comentarios-card {
+    background: white;
+    margin-top: 40px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .comentarios-lista {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .comentario-item {
+    background-color: #e5e7eb;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #374151;
+  }
+  
+  .sin-comentarios {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+  }

@@ -43,7 +43,7 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link to="/crearpersonaje" className={`sidebar-link ${location.pathname === '/crearpersonaje' ? 'active' : ''}`}>
+          <Link to="/profesor" className={`sidebar-link ${location.pathname === '/profesor' ? 'active' : ''}`}>
             <FaTrash className="sidebar-icon" />
             Eliminar personaje
           </Link>

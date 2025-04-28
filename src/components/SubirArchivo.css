@@ -8,11 +8,12 @@
   
   /* Tarjetas */
   .upload-card, .history-card {
-    background: white;
+    background: rgb(255, 0, 0);
     border-radius: 20px;
     padding: 10px 10px 10px 10px;
     margin-bottom: 40px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
   }
   
   .upload-card {
