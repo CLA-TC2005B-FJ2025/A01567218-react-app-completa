@@ -8,7 +8,7 @@
     font-family: 'Poppins', sans-serif;
     line-height: 1.05;
 
-    background-image: url('/public/img/BGmain.png');
+    background-image: url('/public/img/BGmain.png') !important;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

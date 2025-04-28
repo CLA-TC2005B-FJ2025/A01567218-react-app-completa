@@ -31,9 +31,9 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link to="/crearpersonaje" className={`sidebar-link ${location.pathname === '/crearpersonaje' ? 'active' : ''}`}>
+          <Link to="/subirarchivo" className={`sidebar-link ${location.pathname === '/subirarchivo' ? 'active' : ''}`}>
             <HiDocumentAdd className="add-icon" />
-            Crear personaje
+            Subir archivos
           </Link>
         </li>
         <li>
@@ -43,7 +43,7 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link to="/eliminarpersonaje" className={`sidebar-link ${location.pathname === '/eliminarpersonaje' ? 'active' : ''}`}>
+          <Link to="/crearpersonaje" className={`sidebar-link ${location.pathname === '/crearpersonaje' ? 'active' : ''}`}>
             <FaTrash className="sidebar-icon" />
             Eliminar personaje
           </Link>

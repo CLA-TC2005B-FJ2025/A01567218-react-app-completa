@@ -10,6 +10,7 @@ import CrearPersonaje from './components/CrearPersonaje';
 import ActualizarPersonaje from './components/ActualizarPersonaje';
 import EliminarPersonaje from './components/EliminarPersonaje';
 import PrivateLayout from './components/PrivateLayout';
+import SubirArchivo from './components/SubirArchivo';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/crearpersonaje" element={<PrivateRoute><PrivateLayout><CrearPersonaje /></PrivateLayout></PrivateRoute>} />
           <Route path="/actualizarpersonaje" element={<PrivateRoute><PrivateLayout><ActualizarPersonaje /></PrivateLayout></PrivateRoute>} />
           <Route path="/eliminarpersonaje" element={<PrivateRoute><PrivateLayout><EliminarPersonaje /></PrivateLayout></PrivateRoute>} />
+          <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </AuthProvider>

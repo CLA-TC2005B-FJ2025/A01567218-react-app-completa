@@ -1,10 +1,21 @@
 /* src/components/PrivateLayout.css */
 .private-layout {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+.layout-body {
+    display: flex;
+    flex: 1;
+    margin-top: 80px; 
+    margin-left: 25px; 
   }
   
   .main-content {
-    margin-left: 200px;
-    width: calc(100% - 200px);
+    background-image: url('/public/img/BGmain.png');
+    margin-left: 170px; 
+    width: 100%;
+    background-color: white; 
   }
   

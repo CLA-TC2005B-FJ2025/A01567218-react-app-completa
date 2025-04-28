@@ -7,11 +7,13 @@ function PrivateLayout({ children }) {
   return (
     <div className="private-layout">
       <Topbar />
+      <div className="layout-body">
       <Sidebar />
       <div className="main-content">
         {children}
       </div>
     </div>
+  </div>
   );
 }
 

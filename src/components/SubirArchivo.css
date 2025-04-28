@@ -1,0 +1,192 @@
+.page-background {
+    min-height: 100vh;
+    background: rgba(255, 0, 0, 0);
+    padding: 20px 20px 40px 20px; /*top right bottom left*/
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Tarjetas */
+  .upload-card, .history-card {
+    background: white;
+    border-radius: 20px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .upload-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .upload-left, .upload-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120%;
+  }
+  
+  /* Icono grande */
+  .upload-icon {
+    font-size: 80px;
+    color: #212121;
+    margin: 20px 0;
+    background-color: #4970ff68;
+    display: flex;
+    padding: 40px;
+    border-radius: 10%; 
+  }
+  
+  /* Botón seleccionar archivo */
+  .select-file-button {
+    margin-top: 20px;
+    background-color: #d1d5db;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+
+  }
+  
+  .select-file-button:hover {
+    background-color: #9ca3af;
+  }
+  
+  /* Nombre de archivo */
+  .file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  /* Área de arrastre */
+  .upload-left.dragging {
+    border: 2px dashed #4f46e5;
+    background-color: rgba(99, 102, 241, 0.1);
+    border-radius: 16px;
+    transition: background-color 0.3s, border 0.3s;
+  }
+  
+  /* Inputs de detalle */
+  .detail-input {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .detail-input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .detail-input select {
+    width: 100%;
+    padding: 10px;
+    background-color: #d1d5db;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+
+  }
+  
+  /* Modal éxito subir */
+  .modal-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #10b981;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    animation: fadeIn 0.5s ease forwards;
+    z-index: 9999;
+  }
+  
+  /* Modal éxito eliminar */
+  .modal-delete {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background-color: #f87171;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    animation: fadeIn 0.5s ease forwards;
+    z-index: 9999;
+  }
+  
+  @keyframes fadeIn {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Historial de archivos */
+  .history-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e5e7eb;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+  
+  /* Botón eliminar */
+  .delete-button {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s;
+  }
+  
+  .delete-button:hover {
+    transform: scale(1.2);
+  }
+
+  .search-input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .detalles-card {
+    background: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .uploadicon-container {
+    background: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
