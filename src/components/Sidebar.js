@@ -37,9 +37,9 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link to="/actualizarpersonaje" className={`sidebar-link ${location.pathname === '/actualizarpersonaje' ? 'active' : ''}`}>
+          <Link to="/añadirperfil" className={`sidebar-link ${location.pathname === '/añadirperfil' ? 'active' : ''}`}>
             <HiUserAdd className="sidebar-icon" />
-            Actualizar personaje
+            Añadir perfil
           </Link>
         </li>
         <li>

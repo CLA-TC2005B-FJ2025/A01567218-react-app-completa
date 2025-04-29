@@ -17,17 +17,37 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/menu" element={<PrivateRoute><PrivateLayout><MenuPage /></PrivateLayout></PrivateRoute>} />
-          <Route path="/listapersonajes" element={<PrivateRoute><PrivateLayout><ListaPersonajes /></PrivateLayout></PrivateRoute>} />
-          <Route path="/crearpersonaje" element={<PrivateRoute><PrivateLayout><CrearPersonaje /></PrivateLayout></PrivateRoute>} />
-          <Route path="/actualizarpersonaje" element={<PrivateRoute><PrivateLayout><ActualizarPersonaje /></PrivateLayout></PrivateRoute>} />
-          <Route path="/eliminarpersonaje" element={<PrivateRoute><PrivateLayout><EliminarPersonaje /></PrivateLayout></PrivateRoute>} />
-          <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
-          <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
-          <Route path="/" element={<Navigate to="/login" />} />
-        </Routes>
+        {/* Aquí metemos el fondo */}
+        <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+          
+          {/* Fondo fijo detrás */}
+          <div style={{
+            backgroundImage: 'url(/img/BGmain.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: -1
+          }}></div>
+
+          {/* Tus rutas encima */}
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/menu" element={<PrivateRoute><PrivateLayout><MenuPage /></PrivateLayout></PrivateRoute>} />
+            <Route path="/listapersonajes" element={<PrivateRoute><PrivateLayout><ListaPersonajes /></PrivateLayout></PrivateRoute>} />
+            <Route path="/crearpersonaje" element={<PrivateRoute><PrivateLayout><CrearPersonaje /></PrivateLayout></PrivateRoute>} />
+            <Route path="/actualizarpersonaje" element={<PrivateRoute><PrivateLayout><ActualizarPersonaje /></PrivateLayout></PrivateRoute>} />
+            <Route path="/eliminarpersonaje" element={<PrivateRoute><PrivateLayout><EliminarPersonaje /></PrivateLayout></PrivateRoute>} />
+            <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
+            <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
+            <Route path="/" element={<Navigate to="/login" />} />
+          </Routes>
+
+        </div>
       </AuthProvider>
     </Router>
   );

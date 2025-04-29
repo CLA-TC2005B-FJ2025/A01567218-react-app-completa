@@ -65,7 +65,7 @@ function AñadirPerfil() {
           </div>
 
           <div className="form-group">
-            <label>Correo electrónico</label>
+            <label>Matrícula</label>
             <input
               type="text"
               value={codigoMateria}
@@ -75,7 +75,7 @@ function AñadirPerfil() {
           </div>
 
           <div className="form-group">
-            <label>Rol</label>
+            <label>Tipo de usuario</label>
             <input
               type="text"
               value={codigoMateria}
