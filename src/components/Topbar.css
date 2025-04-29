@@ -53,6 +53,7 @@
     font-weight: 600;
     color: white;
     font-family: 'Poppins', sans-serif;
+    margin-bottom: 60px;
   }
   
   .topbar-right {
@@ -62,6 +63,7 @@
   }
   
   .icon-button {
+    color: white;
     background: none;
     border: none;
     outline: none;
@@ -75,11 +77,24 @@
   .icon-button:hover {
     transform: scale(1.1);
   }
+
+  .topbar-right button {
+    background: transparent; /* Quita el fondo */
+    border: none;             /* Quita los bordes */
+    cursor: pointer;          /* Cambia a manita al pasar el mouse */
+    padding: 0px;             /* Opcional: espacio interno */
+    display: flex;            /* Centra el icono */
+    align-items: center;
+    justify-content: center;
+  }
   
   .topbar-icon {
-    font-size: 28px;
-    color: white;
-    
+    font-size: 34px;         
+    color: #ffffff;       
   }
-
-
+  
+  .topbar-right button:hover .topbar-icon {
+    color: #001974;          
+    transform: scale(1.1);   
+    transition: 0.2s ease;
+  }

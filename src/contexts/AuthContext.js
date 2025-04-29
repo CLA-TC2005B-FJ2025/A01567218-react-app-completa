@@ -1,56 +1,53 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useCallback } from 'react';
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [nombreCompleto, setNombreCompleto] = useState('');
 
-  const login = async (username, password) => {
+  const [user, setUser] = useState(() => {
+    // Intenta obtener el usuario de las cookies al cargar el componente
+    const storedUser = Cookies.get('username');
+    return storedUser ? storedUser : null;
+  });
+
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:5000'; // Valor por defecto
+  console.log(apiBaseUrl);
+
+  const login = useCallback(async (username, password) => {
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch(`${apiBaseUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // para sesión
         body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
-        // Login exitoso
         setUser(username);
-
-        // Luego fetch al nombre completo
-        const nombreResponse = await fetch('http://localhost:5000/usuario', {
-          credentials: 'include',
-        });
-
-        if (nombreResponse.ok) {
-          const nombre = await nombreResponse.text();
-          setNombreCompleto(nombre);
-        } else {
-          console.error('Error obteniendo el nombre completo');
-        }
-
+        // Guarda el username en una cookie
+        Cookies.set('username', username, { expires: 7 }); // Expira en 7 días
         return true;
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Error en login');
+        const data = await response.json();
+        console.error('Inicio con error:', data.error);
+        return false;
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Error durante inicio:', error);
       return false;
     }
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
-    setNombreCompleto('');
-  };
-
+    // Elimina la cookie del username al cerrar sesión
+    Cookies.remove('username');
+  }, []);
+  
   return (
-    <AuthContext.Provider value={{ user, nombreCompleto, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

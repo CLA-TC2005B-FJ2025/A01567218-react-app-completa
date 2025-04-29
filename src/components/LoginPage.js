@@ -4,7 +4,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import './LoginPage.css';
 import './MenuPage.css';
 
-
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

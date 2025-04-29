@@ -59,8 +59,8 @@
 
 #sidebar ul li a:hover, 
 #sidebar ul li button:hover {
-  color: #0062ff;
-  background-color: #bfdbfe;
+  color: #ffffff;
+  background-color: #69b9ff80;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateX(4px) scale(1.05);
 }

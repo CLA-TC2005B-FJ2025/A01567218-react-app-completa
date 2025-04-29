@@ -24,9 +24,9 @@ function Topbar() {
       </div>
 
       <div className="topbar-center">
-        {/* Mostrar Bienvenido SOLO si estoy en /menu */}
+        {/* solo en menu */}
         {location.pathname === '/menu' && (
-          <h1 className="bienvenida">Bienvenido, {nombreCompleto}</h1>
+          <h1 className="bienvenida">Bienvenido :D </h1>
         )}
       </div>
 
