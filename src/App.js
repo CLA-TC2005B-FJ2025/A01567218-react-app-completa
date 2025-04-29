@@ -11,6 +11,7 @@ import ActualizarPersonaje from './components/ActualizarPersonaje';
 import EliminarPersonaje from './components/EliminarPersonaje';
 import PrivateLayout from './components/PrivateLayout';
 import SubirArchivo from './components/SubirArchivo';
+import AñadirPerfil from './components/AñadirPerfil';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/actualizarpersonaje" element={<PrivateRoute><PrivateLayout><ActualizarPersonaje /></PrivateLayout></PrivateRoute>} />
           <Route path="/eliminarpersonaje" element={<PrivateRoute><PrivateLayout><EliminarPersonaje /></PrivateLayout></PrivateRoute>} />
           <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
+          <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </AuthProvider>

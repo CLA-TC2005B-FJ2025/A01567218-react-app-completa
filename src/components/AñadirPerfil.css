@@ -1,0 +1,102 @@
+.crear-materia-page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
+  
+  /* Tarjeta principal */
+  .crear-materia-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0px;
+  }
+  
+  .crear-materia-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .crear-materia-form .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .crear-materia-form label {
+    margin-bottom: 2px;
+    font-weight: 500;
+
+  }
+  
+  .crear-materia-form input,
+  .crear-materia-form select {
+    padding: 10px;
+    border: 0px solid #ccc;
+    background-color: #ccdfff8e;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: -5px;
+  }
+  
+  .crear-materia-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .crear-materia-button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+  }
+  
+  /* Segunda tarjeta: perfiles */
+  .perfiles-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e8e8f0;
+  }
+  
+  .perfiles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .perfil-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+  }
