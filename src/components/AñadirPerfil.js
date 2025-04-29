@@ -1,36 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AñadirPerfil.css'; // Tu CSS
 
 function AñadirPerfil() {
-  const [nombreMateria, setNombreMateria] = useState('');
-  const [codigoMateria, setCodigoMateria] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellidoPaterno, setApellidoPaterno] = useState('');
+  const [apellidoMaterno, setApellidoMaterno] = useState('');
+  const [matricula, setMatricula] = useState('');
+  const [rol, setRol] = useState('');
   const [departamento, setDepartamento] = useState('');
 
+  const [departamentos, setDepartamentos] = useState([]);
+  const [permisos, setPermisos] = useState([]);
+  const [historialPerfiles, setHistorialPerfiles] = useState([]); // <- aquí guardamos historial
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Datos de ejemplo de perfiles
-  const perfiles = [
-    { nombre: 'Profesor' },
-    { nombre: 'Coordinador académico' },
-    { nombre: 'Director académico' },
-    { nombre: 'Laboratorista' },
-    { nombre: 'Tutor' },
-    { nombre: 'Coordinador deportivo' },
-    { nombre: 'Coordinador cultural' },
-  ];
+  useEffect(() => {
+    const fetchDatos = async () => {
+      try {
+        // Traer Departamentos
+        const responseDep = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/Departamento/nombres');
+        const dataDep = await responseDep.json();
+        if (Array.isArray(dataDep)) {
+          setDepartamentos(dataDep);
+        } else if (dataDep.departamentos) {
+          setDepartamentos(dataDep.departamentos);
+        }
 
-  const handleSubmit = (e) => {
+        // Traer Permisos
+        const responsePerm = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/Permisos');
+        const dataPerm = await responsePerm.json();
+        if (Array.isArray(dataPerm)) {
+          setPermisos(dataPerm);
+        } else if (dataPerm.permisos) {
+          setPermisos(dataPerm.permisos);
+        }
+
+        // Traer Historial de Profesores
+        const responseHistorial = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores/rol');
+        const dataHistorial = await responseHistorial.json();
+        console.log('Respuesta del historial:', dataHistorial); // <--- AGREGA ESTO
+
+        if (Array.isArray(dataHistorial)) {
+          setHistorialPerfiles(dataHistorial); // Es una lista de strings
+        } else if (dataHistorial.profesores) {
+          setHistorialPerfiles(dataHistorial.profesores);
+        }
+      } catch (error) {
+        console.error('Error al cargar datos:', error);
+      }
+    };
+
+    fetchDatos();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ nombreMateria, codigoMateria, departamento });
+
+    const data = {
+      nombre,
+      apellidoPaterno,
+      apellidoMaterno,
+      matricula,
+      rol,
+      departamento
+    };
+
+    try {
+      const response = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert('Perfil creado exitosamente');
+        setNombre('');
+        setApellidoPaterno('');
+        setApellidoMaterno('');
+        setMatricula('');
+        setRol('');
+        setDepartamento('');
+        // Refrescar historial
+        actualizarHistorial();
+      } else {
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Error al crear perfil:', error);
+      alert('Error de conexión con el servidor');
+    }
   };
 
-  const filteredPerfiles = perfiles.filter(perfil =>
-    perfil.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const actualizarHistorial = async () => {
+    try {
+      const responseHistorial = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores/rol');
+      const dataHistorial = await responseHistorial.json();
+      if (Array.isArray(dataHistorial)) {
+        setHistorialPerfiles(dataHistorial);
+      } else if (dataHistorial.profesores) {
+        setHistorialPerfiles(dataHistorial.profesores);
+      }
+    } catch (error) {
+      console.error('Error al actualizar historial:', error);
+    }
+  };
 
   return (
     <div className="crear-materia-page">
-      {/* Primera tarjeta: Crear Materia */}
+      {/* Primera tarjeta: Crear Perfil */}
       <div className="crear-materia-container">
         <h2 className="crear-materia-title">Añadir perfil</h2>
         <form onSubmit={handleSubmit} className="crear-materia-form">
@@ -38,8 +118,8 @@ function AñadirPerfil() {
             <label>Nombre</label>
             <input
               type="text"
-              value={nombreMateria}
-              onChange={(e) => setNombreMateria(e.target.value)}
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
               required
             />
           </div>
@@ -48,8 +128,8 @@ function AñadirPerfil() {
             <label>Apellido paterno</label>
             <input
               type="text"
-              value={codigoMateria}
-              onChange={(e) => setCodigoMateria(e.target.value)}
+              value={apellidoPaterno}
+              onChange={(e) => setApellidoPaterno(e.target.value)}
               required
             />
           </div>
@@ -58,8 +138,8 @@ function AñadirPerfil() {
             <label>Apellido materno</label>
             <input
               type="text"
-              value={codigoMateria}
-              onChange={(e) => setCodigoMateria(e.target.value)}
+              value={apellidoMaterno}
+              onChange={(e) => setApellidoMaterno(e.target.value)}
               required
             />
           </div>
@@ -68,22 +148,25 @@ function AñadirPerfil() {
             <label>Matrícula</label>
             <input
               type="text"
-              value={codigoMateria}
-              onChange={(e) => setCodigoMateria(e.target.value)}
+              value={matricula}
+              onChange={(e) => setMatricula(e.target.value)}
               required
             />
           </div>
 
           <div className="form-group">
             <label>Tipo de usuario</label>
-            <input
-              type="text"
-              value={codigoMateria}
-              onChange={(e) => setCodigoMateria(e.target.value)}
+            <select
+              value={rol}
+              onChange={(e) => setRol(e.target.value)}
               required
-            />
+            >
+              <option value="">Selecciona un permiso</option>
+              {permisos.map((perm, index) => (
+                <option key={index} value={perm}>{perm}</option>
+              ))}
+            </select>
           </div>
-
 
           <div className="form-group">
             <label>Departamento</label>
@@ -93,11 +176,9 @@ function AñadirPerfil() {
               required
             >
               <option value="">Selecciona un departamento</option>
-              <option value="Académico">Académico</option>
-              <option value="Deportivo">Deportivo</option>
-              <option value="Cultural">Cultural</option>
-              <option value="Laboratorista">Laboratorista</option>
-              <option value="Tutores">Tutores</option>
+              {departamentos.map((dep, index) => (
+                <option key={index} value={dep}>{dep}</option>
+              ))}
             </select>
           </div>
 
@@ -109,7 +190,7 @@ function AñadirPerfil() {
 
       {/* Segunda tarjeta: Lista de Perfiles */}
       <div className="perfiles-container">
-        <h2 className="crear-materia-title">Todos los perfiles</h2>
+        <h2 className="crear-materia-title">Historial de perfiles</h2>
         <input
           type="text"
           placeholder="Buscar perfil"
@@ -119,10 +200,12 @@ function AñadirPerfil() {
         />
 
         <div className="perfiles-list">
-          {filteredPerfiles.map((perfil, index) => (
-            <div key={index} className="perfil-item">
-              {perfil.nombre}
-            </div>
+          {historialPerfiles
+            .filter(perfil => perfil.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map((perfil, index) => (
+              <div key={index} className="perfil-item">
+                {perfil}
+              </div>
           ))}
         </div>
       </div>
