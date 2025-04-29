@@ -39,7 +39,8 @@ function MenuPage() {
                 textColor: "#999",
                 pathColor: "#1814A9",  // Azul fuerte
                 trailColor: "#d6d6d6",
-                textSize: '18px',
+                textSize: '24px',
+                fontWeight: 'bold'
               })}
             />
             <p className="label">Encuestas completadas</p>
@@ -64,7 +65,8 @@ function MenuPage() {
                 textColor: "#999",
                 pathColor: "#E03E3E", // Rojo fuerte
                 trailColor: "#d6d6d6",
-                textSize: '18px',
+                textSize: '24px',
+                fontWeight: 'bold'
               })}
             />
             <p className="label">Encuestas faltantes</p>

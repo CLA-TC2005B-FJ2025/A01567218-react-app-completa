@@ -1,0 +1,112 @@
+.contenedor {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(to right, #1e3a8a, #6b21a8);
+    padding: 30px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .panel {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+  }
+  
+  .panel h2 {
+    margin-bottom: 15px;
+  }
+  
+  select {
+    padding: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .lista-resultados {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tarjeta-resultado {
+    background-color: #f2f2f2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .icono-usuario {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #7e779d91;
+  }
+  
+  .info-usuario {
+    flex: 1;
+  }
+  
+  .porcentaje {
+    font-weight: bold;
+  }
+  
+  .verde {
+    color: green;
+  }
+  .amarillo {
+    color: goldenrod;
+  }
+  .naranja {
+    color: orange;
+  }
+  .rojo {
+    color: red;
+  }
+  
+  .panel-derecho .buscador {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .panel-derecho input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  .lista-comentarios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tarjeta-comentario {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .icono-comentario {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #7e779d91;
+  }
+  
+  .texto-comentario {
+    flex: 1;
+    font-size: 14px;
+  }

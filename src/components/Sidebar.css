@@ -2,12 +2,21 @@
   width: 160px;
   background-color: rgba(72, 0, 255, 0.147);
   padding: 18px;
-  height: 100vh;
+  height: calc(100vh - 80px);
   position: fixed;
   top: 80px;
   left: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   animation: slideIn 0.8s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.sidebar-content {
+  flex: 1;
+  padding-bottom: 120px; /* Espacio para la sección de usuario */
 }
 
 /* animación */
@@ -77,13 +86,14 @@
   color: #ffffff !important;
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transform: translateX(4px) scale(1.05);
   border-radius: 12px;
-  width: 85%;
+  width: 90%;
 }
 
 /*icon de link activo */
-.sidebar-link.active .text-xl {
+.sidebar-link.active .sidebar-icon,
+.sidebar-link.active .home-icon,
+.sidebar-link.active .add-icon {
   color: #ffffff;
   transform: scale(1.2);
   transition: all 0.3s ease;
@@ -111,4 +121,40 @@ font-size: 50px;
 
 .home-icon {
   font-size: 35px;
+}
+
+/* Estilos para la sección de usuario */
+.user-section {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  width: 70%;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 25px 28px;
+  z-index: 1000;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+.user-icon {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #ffffff;
 }

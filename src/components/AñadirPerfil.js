@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AñadirPerfil.css'; // Tu CSS
+import { FaUser, FaIdCard, FaUserTie, FaBuilding } from 'react-icons/fa';
 
 function AñadirPerfil() {
   const [nombre, setNombre] = useState('');
@@ -114,72 +115,84 @@ function AñadirPerfil() {
       <div className="crear-materia-container">
         <h2 className="crear-materia-title">Añadir perfil</h2>
         <form onSubmit={handleSubmit} className="crear-materia-form">
-          <div className="form-group">
-            <label>Nombre</label>
-            <input
-              type="text"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-              required
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label><FaUser className="form-icon" /> Nombre</label>
+              <input
+                type="text"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                required
+                placeholder="Ingrese el nombre"
+              />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Apellido paterno</label>
-            <input
-              type="text"
-              value={apellidoPaterno}
-              onChange={(e) => setApellidoPaterno(e.target.value)}
-              required
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label><FaUserTie className="form-icon" /> Apellido paterno</label>
+              <input
+                type="text"
+                value={apellidoPaterno}
+                onChange={(e) => setApellidoPaterno(e.target.value)}
+                required
+                placeholder="Ingrese el apellido paterno"
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FaUserTie className="form-icon" /> Apellido materno</label>
+              <input
+                type="text"
+                value={apellidoMaterno}
+                onChange={(e) => setApellidoMaterno(e.target.value)}
+                required
+                placeholder="Ingrese el apellido materno"
+              />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Apellido materno</label>
-            <input
-              type="text"
-              value={apellidoMaterno}
-              onChange={(e) => setApellidoMaterno(e.target.value)}
-              required
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label><FaIdCard className="form-icon" /> Matrícula</label>
+              <input
+                type="text"
+                value={matricula}
+                onChange={(e) => setMatricula(e.target.value)}
+                required
+                placeholder="Ingrese la matrícula"
+              />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Matrícula</label>
-            <input
-              type="text"
-              value={matricula}
-              onChange={(e) => setMatricula(e.target.value)}
-              required
-            />
-          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label><FaUserTie className="form-icon" /> Tipo de usuario</label>
+              <select
+                value={rol}
+                onChange={(e) => setRol(e.target.value)}
+                required
+              >
+                <option value="">Selecciona un permiso</option>
+                {permisos.map((perm, index) => (
+                  <option key={index} value={perm}>{perm}</option>
+                ))}
+              </select>
+            </div>
 
-          <div className="form-group">
-            <label>Tipo de usuario</label>
-            <select
-              value={rol}
-              onChange={(e) => setRol(e.target.value)}
-              required
-            >
-              <option value="">Selecciona un permiso</option>
-              {permisos.map((perm, index) => (
-                <option key={index} value={perm}>{perm}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>Departamento</label>
-            <select
-              value={departamento}
-              onChange={(e) => setDepartamento(e.target.value)}
-              required
-            >
-              <option value="">Selecciona un departamento</option>
-              {departamentos.map((dep, index) => (
-                <option key={index} value={dep}>{dep}</option>
-              ))}
-            </select>
+            <div className="form-group">
+              <label><FaBuilding className="form-icon" /> Departamento</label>
+              <select
+                value={departamento}
+                onChange={(e) => setDepartamento(e.target.value)}
+                required
+              >
+                <option value="">Selecciona un departamento</option>
+                {departamentos.map((dep, index) => (
+                  <option key={index} value={dep}>{dep}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <button type="submit" className="crear-materia-button">
@@ -191,13 +204,15 @@ function AñadirPerfil() {
       {/* Segunda tarjeta: Lista de Perfiles */}
       <div className="perfiles-container">
         <h2 className="crear-materia-title">Historial de perfiles</h2>
-        <input
-          type="text"
-          placeholder="Buscar perfil"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Buscar perfil..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
 
         <div className="perfiles-list">
           {historialPerfiles
