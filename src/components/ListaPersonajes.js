@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPersonajes } from '../api';
+import Profesor from './Profesor';
 
 function ListaPersonajes() {
     const [personajes, setPersonajes] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [showProfesor, setShowProfesor] = useState(false);
 
     useEffect(() => {
         const fetchPersonajes = async () => {
@@ -21,12 +23,20 @@ function ListaPersonajes() {
         fetchPersonajes();
     }, []);
 
+    const handleDeleteClick = () => {
+        setShowProfesor(true);
+    };
+
     if (loading) {
         return <p>Cargando personajes...</p>;
     }
 
     if (error) {
         return <p>Error al cargar personajes: {error}</p>;
+    }
+
+    if (showProfesor) {
+        return <Profesor />;
     }
 
     return (
@@ -37,6 +47,7 @@ function ListaPersonajes() {
                     {personajes.map(personaje => (
                         <li key={personaje.id}>
                             ID: {personaje.id}, Nombre: {personaje.name}, Email: {personaje.email}
+                            <button onClick={handleDeleteClick}>Eliminar Personaje</button>
                         </li>
                     ))}
                 </ul>

@@ -28,7 +28,6 @@ function MenuPage() {
       </header>
 
       <div className="menu-content">
-
         {/* Tarjeta de encuestas completadas */}
         <div className="card-encuestas">
           <div className="circular-chart">
@@ -37,7 +36,7 @@ function MenuPage() {
               text={`${porcentajeCompletadas}%`}
               styles={buildStyles({
                 textColor: "#999",
-                pathColor: "#1814A9",  // Azul fuerte
+                pathColor: "#1814A9",
                 trailColor: "#d6d6d6",
                 textSize: '24px',
                 fontWeight: 'bold'
@@ -63,7 +62,7 @@ function MenuPage() {
               text={`${porcentajeFaltantes}%`}
               styles={buildStyles({
                 textColor: "#999",
-                pathColor: "#E03E3E", // Rojo fuerte
+                pathColor: "#E03E3E",
                 trailColor: "#d6d6d6",
                 textSize: '24px',
                 fontWeight: 'bold'
@@ -80,7 +79,6 @@ function MenuPage() {
             </select>
           </div>
         </div>
-
       </div>
     </div>
   );

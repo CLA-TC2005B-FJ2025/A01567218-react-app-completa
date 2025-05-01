@@ -1,56 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import './Profesor.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
 
 function ResultadosPage() {
-  const [data, setData] = useState([]);
-  const [grupos, setGrupos] = useState([]);
-  const [grupoSeleccionado, setGrupoSeleccionado] = useState('');
-  const [comentarios, setComentarios] = useState([]);
+  const [data, setData] = useState([
+    { pregunta: "Claridad", promedio: 8.5 },
+    { pregunta: "Disponibilidad", promedio: 9.2 },
+    { pregunta: "Material", promedio: 7.8 },
+    { pregunta: "Evaluaciones", promedio: 8.9 },
+    { pregunta: "Retroalimentación", promedio: 8.1 },
+    { pregunta: "Dominio", promedio: 9.5 },
+    { pregunta: "Puntualidad", promedio: 9.0 },
+    { pregunta: "Trabajo equipo", promedio: 8.3 },
+    { pregunta: "Manejo", promedio: 4.2 }
+  ]);
 
-  useEffect(() => {
-    // Cargar grupos
-    const fetchGrupos = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/materias');
-        const gruposData = await response.json();
-        setGrupos(gruposData.map(g => g.nombre)); 
-      } catch (error) {
-        console.error('Error al cargar grupos:', error);
-      }
-    };
+  const [grupos, setGrupos] = useState([
+    "Matemáticas I - Grupo A",
+    "Matemáticas I - Grupo B",
+    "Física I - Grupo A",
+    "Química I - Grupo B"
+  ]);
 
-    fetchGrupos();
-  }, []);
+  const [grupoSeleccionado, setGrupoSeleccionado] = useState('Matemáticas I - Grupo A');
 
-  useEffect(() => {
-    if (grupoSeleccionado) {
-      // Cargar resultados
-      const fetchResultados = async () => {
-        try {
-          const response = await fetch(`http://localhost:5000/resultados/${grupoSeleccionado}`);
-          const resultadosData = await response.json();
-          setData(resultadosData);
-        } catch (error) {
-          console.error('Error al cargar resultados:', error);
-        }
-      };
-
-      // Cargar comentarios
-      const fetchComentarios = async () => {
-        try {
-          const response = await fetch(`http://localhost:5000/comentarios?grupo=${grupoSeleccionado}`);
-          const comentariosData = await response.json();
-          setComentarios(comentariosData);
-        } catch (error) {
-          console.error('Error al cargar comentarios:', error);
-        }
-      };
-
-      fetchResultados();
-      fetchComentarios();
-    }
-  }, [grupoSeleccionado]);
+  const [comentarios, setComentarios] = useState([
+    "El profesor explica muy bien los conceptos y siempre está disponible para resolver dudas.",
+    "Las evaluaciones son justas y reflejan lo que se ve en clase.",
+    "Me gustaría que hubiera más ejemplos prácticos en las clases.",
+    "El material didáctico es muy útil para estudiar.",
+    "Las retroalimentaciones son muy detalladas y ayudan a mejorar."
+  ]);
 
   const getColor = (value) => {
     if (value < 6) return "#f87171"; // rojo
@@ -58,8 +42,15 @@ function ResultadosPage() {
     return "#4ade80"; // verde
   };
 
+  // Calcular promedio general
+  const promedioGeneral = data.reduce((acc, curr) => acc + curr.promedio, 0) / data.length;
+  const porcentajePromedio = (promedioGeneral / 10) * 100;
+
   return (
     <div className="resultados-page">
+      <Sidebar />
+      <Topbar />
+      
       <div className="grafica-container">
         <div className="grafica-izquierda">
           <div className="grafica-header">
@@ -69,7 +60,6 @@ function ResultadosPage() {
               onChange={(e) => setGrupoSeleccionado(e.target.value)}
               className="grupo-select"
             >
-              <option value="">Seleccione grupo</option>
               {grupos.map((grupo, index) => (
                 <option key={index} value={grupo}>{grupo}</option>
               ))}
@@ -93,49 +83,50 @@ function ResultadosPage() {
 
         <div className="estadisticas">
           <h3>Calificación más alta:</h3>
-          <p>{Math.max(...data.map(d => d.promedio)) || '-'}</p>
+          <p>9.5</p>
 
           <h3>Calificación más baja:</h3>
-          <p>{Math.min(...data.map(d => d.promedio)) || '-'}</p>
+          <p>4.2</p>
 
           <h3>Calificación más repetida:</h3>
-          <p>{data.length > 0 ? calcularMasRepetida(data.map(d => d.promedio)) : '-'}</p>
+          <p>8.5</p>
 
           <h3>Calificación menos repetida:</h3>
-          <p>{data.length > 0 ? calcularMenosRepetida(data.map(d => d.promedio)) : '-'}</p>
+          <p>9.2</p>
+        </div>
+      </div>
+
+      {/* Gráfico circular de promedio general */}
+      <div className="promedio-general-container">
+        <h2>Promedio General</h2>
+        <div className="circular-progress-container">
+          <CircularProgressbar
+            value={porcentajePromedio}
+            text={`${promedioGeneral.toFixed(1)}`}
+            styles={buildStyles({
+              textColor: "#1814A9",
+              pathColor: "#1814A9",
+              trailColor: "#d6d6d6",
+              textSize: '32px',
+              fontWeight: 'bold'
+            })}
+          />
         </div>
       </div>
 
       {/* Sección Comentarios */}
       <div className="comentarios-card">
         <h2>Comentarios:</h2>
-
-        {comentarios.length === 0 ? (
-          <p className="sin-comentarios">No hay comentarios para este grupo.</p>
-        ) : (
-          <div className="comentarios-lista">
-            {comentarios.map((comentario, index) => (
-              <div key={index} className="comentario-item">
-                {comentario.comentario}
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="comentarios-lista">
+          {comentarios.map((comentario, index) => (
+            <div key={index} className="comentario-item">
+              {comentario}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-}
-
-function calcularMasRepetida(arr) {
-  const freq = {};
-  arr.forEach(num => freq[num] = (freq[num] || 0) + 1);
-  return Object.keys(freq).reduce((a, b) => freq[a] > freq[b] ? a : b);
-}
-
-function calcularMenosRepetida(arr) {
-  const freq = {};
-  arr.forEach(num => freq[num] = (freq[num] || 0) + 1);
-  return Object.keys(freq).reduce((a, b) => freq[a] < freq[b] ? a : b);
 }
 
 export default ResultadosPage;

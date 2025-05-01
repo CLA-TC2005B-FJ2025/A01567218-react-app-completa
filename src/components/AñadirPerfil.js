@@ -19,7 +19,7 @@ function AñadirPerfil() {
     const fetchDatos = async () => {
       try {
         // Traer Departamentos
-        const responseDep = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/Departamento/nombres');
+        const responseDep = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/Departamento/nombres');
         const dataDep = await responseDep.json();
         if (Array.isArray(dataDep)) {
           setDepartamentos(dataDep);
@@ -28,7 +28,7 @@ function AñadirPerfil() {
         }
 
         // Traer Permisos
-        const responsePerm = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/Permisos');
+        const responsePerm = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/Permisos');
         const dataPerm = await responsePerm.json();
         if (Array.isArray(dataPerm)) {
           setPermisos(dataPerm);
@@ -37,7 +37,7 @@ function AñadirPerfil() {
         }
 
         // Traer Historial de Profesores
-        const responseHistorial = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores/rol');
+        const responseHistorial = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores/rol');
         const dataHistorial = await responseHistorial.json();
         console.log('Respuesta del historial:', dataHistorial); // <--- AGREGA ESTO
 
@@ -67,7 +67,7 @@ function AñadirPerfil() {
     };
 
     try {
-      const response = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores', {
+      const response = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function AñadirPerfil() {
 
   const actualizarHistorial = async () => {
     try {
-      const responseHistorial = await fetch('https://reimagined-xylophone-wrxqq977xg95cgqwj-5000.app.github.dev/profesores/rol');
+      const responseHistorial = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores/rol');
       const dataHistorial = await responseHistorial.json();
       if (Array.isArray(dataHistorial)) {
         setHistorialPerfiles(dataHistorial);

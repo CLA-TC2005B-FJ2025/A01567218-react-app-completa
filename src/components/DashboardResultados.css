@@ -96,8 +96,9 @@
     padding: 15px;
     border-radius: 20px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 15px;
+    position: relative;
   }
   
   .icono-comentario {
@@ -109,4 +110,24 @@
   .texto-comentario {
     flex: 1;
     font-size: 14px;
+  }
+  
+  .delete-button {
+    background: none;
+    border: none;
+    color: #dc2626;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+  
+  .delete-button:hover {
+    color: #b91c1c;
+  }
+  
+  .delete-button svg {
+    font-size: 18px;
   }

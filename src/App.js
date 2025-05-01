@@ -13,7 +13,7 @@ import PrivateLayout from './components/PrivateLayout';
 import SubirArchivo from './components/SubirArchivo';
 import AñadirPerfil from './components/AñadirPerfil';
 import DashboardResultados from './components/DashboardResultados';
-
+import Profesor from './components/Profesor';
 function App() {
   return (
     <Router>
@@ -46,7 +46,7 @@ function App() {
             <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
             <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
             <Route path="/dashboardresultados" element={<PrivateRoute><PrivateLayout><DashboardResultados /></PrivateLayout></PrivateRoute>} />
-            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/profesor" element={<Profesor />} />
           </Routes>
 
         </div>

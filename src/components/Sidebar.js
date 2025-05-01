@@ -44,18 +44,7 @@ function Sidebar() {
               Añadir perfil
             </Link>
           </li>
-          <li>
-            <Link to="/eliminarpersonaje" className={`sidebar-link ${location.pathname === '/eliminarpersonaje' ? 'active' : ''}`}>
-              <FaTrash className="sidebar-icon" />
-              Eliminar personaje
-            </Link>
-          </li>
-          <li>
-            <button onClick={handleLogout} className="sidebar-link">
-              <FaSignOutAlt className="sidebar-icon" />
-              Cerrar sesión
-            </button>
-          </li>
+
         </ul>
       </div>
 

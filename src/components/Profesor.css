@@ -1,82 +1,166 @@
+.contenedor-graficos {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  background: linear-gradient(to right, #1e3a8a, #6b21a8);
+  border-radius: 30px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.barra-preguntas {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 65%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.barra-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.fila-barra {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.etiqueta {
+  width: 100px;
+}
+
+.barra {
+  background: #e0e0e0;
+  height: 14px;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.relleno-barra {
+  height: 100%;
+  background: linear-gradient(to right, #4f46e5, #6366f1);
+  border-radius: 10px;
+}
+
+.estadisticas-box {
+  width: 30%;
+  background: #ece8fd;
+  padding: 20px;
+  border-radius: 25px;
+  color: #333;
+  font-size: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.azul {
+  color: #4f46e5;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .resultados-page {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
-    padding: 120px 40px 40px 220px;
-  }
-  
-  .grafica-container {
-    display: flex;
-    justify-content: space-between;
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    gap: 30px;
-  }
-  
-  .grafica-izquierda {
-    flex: 2;
-  }
-  
-  .grafica-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .grupo-select {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .estadisticas {
-    flex: 1;
-    background: #e0e7ff;
-    border-radius: 20px;
-    padding: 20px;
-  }
-  
-  .estadisticas h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .estadisticas p {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  padding: 120px 40px 40px 220px;
+}
 
+.grafica-container {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  gap: 30px;
+  margin-bottom: 30px;
+}
 
-  .comentarios-card {
-    background: white;
-    margin-top: 40px;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  
-  .comentarios-lista {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .comentario-item {
-    background-color: #e5e7eb;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #374151;
-  }
-  
-  .sin-comentarios {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-  }
+.grafica-izquierda {
+  flex: 2;
+}
+
+.grafica-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.grupo-select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.estadisticas {
+  flex: 1;
+  background: #e0e7ff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.estadisticas h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.estadisticas p {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.promedio-general-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.promedio-general-container h2 {
+  margin-bottom: 20px;
+  color: #1814A9;
+}
+
+.circular-progress-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.comentarios-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.comentarios-lista {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comentario-item {
+  background-color: #e5e7eb;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #374151;
+}

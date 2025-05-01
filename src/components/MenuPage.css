@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: start;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: nowrap;
   margin-top: 150px;
   font-family: 'Poppins', sans-serif;
@@ -12,19 +12,19 @@
 
 .card-encuestas {
   background: white;
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
+  width: 350px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
 .circular-chart {
-  width: 180px;
-  height: 180px;
+  width: 250px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,34 +32,36 @@
 }
 
 .label {
-  margin-top: 10px;
+  margin-top: 15px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   font-family: 'Poppins', sans-serif;
 }
 
 .encuestas-info {
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   font-family: 'Poppins', sans-serif;
 }
 
 .encuestas-info p {
   font-family: 'Poppins', sans-serif;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .encuestas-info strong {
   font-weight: 600;
+  font-size: 18px;
 }
 
 .dropdown-clasificacion {
-  margin-top: 8px;
-  padding: 6px;
-  font-size: 13px;
-  border-radius: 6px;
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   font-family: 'Poppins', sans-serif;
+  width: 100%;
 }

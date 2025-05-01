@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DashboardResultados.css';
-import { FaSearch, FaUser, FaComment } from 'react-icons/fa';
+import { FaSearch, FaUser, FaComment, FaTrash } from 'react-icons/fa';
 
 const DashboardResultados = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const [comentarios, setComentarios] = useState([
+    "No me gustan las clases del profe Javier. Es muy molesto me choca.",
+    "No me gustan las clases del profe Javier. Es muy molesto me choca.",
+    "No me gustan las clases del profe Javier. Es muy molesto me choca."
+  ]);
 
   const resultados = [
     { nombre: 'Carlos Ventura', porcentaje: 88 },
@@ -13,12 +18,6 @@ const DashboardResultados = () => {
     { nombre: 'Diego Estrada', porcentaje: 55 },
     { nombre: 'Leslye Bailón', porcentaje: 99 },
     { nombre: 'Javier Loaiza', porcentaje: 33 },
-  ];
-
-  const comentarios = [
-    "No me gustan las clases del profe Javier. Es muy molesto me choca.",
-    "No me gustan las clases del profe Javier. Es muy molesto me choca.",
-    "No me gustan las clases del profe Javier. Es muy molesto me choca."
   ];
 
   const getColorClass = (porcentaje) => {
@@ -32,6 +31,10 @@ const DashboardResultados = () => {
     if (nombre === 'Carlos Ventura') {
       navigate('/profesor');
     }
+  };
+
+  const handleDeleteComment = (index) => {
+    setComentarios(prevComentarios => prevComentarios.filter((_, i) => i !== index));
   };
 
   return (
@@ -73,6 +76,13 @@ const DashboardResultados = () => {
             <li key={idx} className="tarjeta-comentario">
               <FaComment className="icono-comentario" />
               <span className="texto-comentario">{comentario}</span>
+              <button 
+                className="delete-button"
+                onClick={() => handleDeleteComment(idx)}
+                title="Eliminar comentario"
+              >
+                <FaTrash />
+              </button>
             </li>
           ))}
         </ul>
