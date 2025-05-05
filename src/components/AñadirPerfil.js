@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AñadirPerfil.css'; // Tu CSS
+import './AñadirPerfil.css';
 import { FaUser, FaIdCard, FaUserTie, FaBuilding } from 'react-icons/fa';
 
 function AñadirPerfil() {
@@ -12,47 +12,33 @@ function AñadirPerfil() {
 
   const [departamentos, setDepartamentos] = useState([]);
   const [permisos, setPermisos] = useState([]);
-  const [historialPerfiles, setHistorialPerfiles] = useState([]); // <- aquí guardamos historial
+  const [historialPerfiles, setHistorialPerfiles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchDatos = async () => {
       try {
-        // Traer Departamentos
-        const responseDep = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/Departamento/nombres');
+        const responseDep = await fetch(`${baseUrl}/Departamento/nombres`);
         const dataDep = await responseDep.json();
-        if (Array.isArray(dataDep)) {
-          setDepartamentos(dataDep);
-        } else if (dataDep.departamentos) {
-          setDepartamentos(dataDep.departamentos);
-        }
+        setDepartamentos(Array.isArray(dataDep) ? dataDep : dataDep.departamentos || []);
 
-        // Traer Permisos
-        const responsePerm = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/Permisos');
+        const responsePerm = await fetch(`${baseUrl}/Permisos`);
         const dataPerm = await responsePerm.json();
-        if (Array.isArray(dataPerm)) {
-          setPermisos(dataPerm);
-        } else if (dataPerm.permisos) {
-          setPermisos(dataPerm.permisos);
-        }
+        setPermisos(Array.isArray(dataPerm) ? dataPerm : dataPerm.permisos || []);
 
-        // Traer Historial de Profesores
-        const responseHistorial = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores/rol');
+        const responseHistorial = await fetch(`${baseUrl}/profesores/rol`);
         const dataHistorial = await responseHistorial.json();
-        console.log('Respuesta del historial:', dataHistorial); // <--- AGREGA ESTO
-
-        if (Array.isArray(dataHistorial)) {
-          setHistorialPerfiles(dataHistorial); // Es una lista de strings
-        } else if (dataHistorial.profesores) {
-          setHistorialPerfiles(dataHistorial.profesores);
-        }
+        console.log('Respuesta del historial:', dataHistorial);
+        setHistorialPerfiles(Array.isArray(dataHistorial) ? dataHistorial : dataHistorial.profesores || []);
       } catch (error) {
         console.error('Error al cargar datos:', error);
       }
     };
 
     fetchDatos();
-  }, []);
+  }, [baseUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,11 +53,9 @@ function AñadirPerfil() {
     };
 
     try {
-      const response = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores', {
+      const response = await fetch(`${baseUrl}/profesores`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
@@ -84,7 +68,6 @@ function AñadirPerfil() {
         setMatricula('');
         setRol('');
         setDepartamento('');
-        // Refrescar historial
         actualizarHistorial();
       } else {
         alert(`Error: ${result.error}`);
@@ -97,13 +80,9 @@ function AñadirPerfil() {
 
   const actualizarHistorial = async () => {
     try {
-      const responseHistorial = await fetch('https://improved-space-acorn-wrxqq977xxr9fvvqw-5000.app.github.dev/profesores/rol');
+      const responseHistorial = await fetch(`${baseUrl}/profesores/rol`);
       const dataHistorial = await responseHistorial.json();
-      if (Array.isArray(dataHistorial)) {
-        setHistorialPerfiles(dataHistorial);
-      } else if (dataHistorial.profesores) {
-        setHistorialPerfiles(dataHistorial.profesores);
-      }
+      setHistorialPerfiles(Array.isArray(dataHistorial) ? dataHistorial : dataHistorial.profesores || []);
     } catch (error) {
       console.error('Error al actualizar historial:', error);
     }
@@ -112,7 +91,7 @@ function AñadirPerfil() {
   return (
     <div className="crear-materia-page">
       <div className="main-cards-container">
-        {/* Primera tarjeta: Crear Perfil */}
+        {/* Crear perfil */}
         <div className="crear-materia-container">
           <h2 className="crear-materia-title">Añadir perfil</h2>
           <form onSubmit={handleSubmit} className="crear-materia-form">
@@ -202,7 +181,7 @@ function AñadirPerfil() {
           </form>
         </div>
 
-        {/* Segunda tarjeta: Lista de Perfiles */}
+        {/* Historial de perfiles */}
         <div className="perfiles-container">
           <h2 className="crear-materia-title">Historial de perfiles</h2>
           <div className="search-container">
@@ -222,7 +201,7 @@ function AñadirPerfil() {
                 <div key={index} className="perfil-item">
                   {perfil}
                 </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
