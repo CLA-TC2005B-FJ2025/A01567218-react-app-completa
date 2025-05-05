@@ -1,14 +1,10 @@
 # Pre-requisitos
-- Se requiere el servicio web del repositorio: EjemploWebServicesAppCompleta
+- Se requiere el servicio web del repositorio: ServiciosWebEquipo-1
 - Modifica el archivo .env.development para configurar la variable REACT_APP_API_BASE_URL a tus necesidades
 
 # En esta versión se implementa manejo de sesión a través de cookies
 Esta versión ya tiene persistencia de la sesión a través de la librería js-cookie (ver AuthContext.js)
 
-
-# En este ejemplo ¿Cómo funciona la autenticación de Usuarios con React?
-
-El objetivo principal es permitir a los usuarios iniciar sesión y, si la autenticación es exitosa, acceder a una sección de menú protegida.
 
 ## Estructura del Proyecto
 
@@ -109,7 +105,16 @@ El `AuthContext` es fundamental para manejar el estado de autenticación en toda
 * **Context API:** Es una característica de React para gestionar el estado de manera global.
 * **`fetch` API:** API nativa de JavaScript para realizar peticiones HTTP al servicio web.
 * **JavaScript (ES6+):** El lenguaje de programación principal utilizado.
-* **JSX:** Extensión de sintaxis de JavaScript utilizada para escribir componentes React.
+* **CSS:** Lenguaje de diseño gráfico.
+* **Node.js:** Entorno en tiempo de ejecución multiplataforma para la capa del servidor basado en JavaScript.
+
+## Instalar dependencias
+npm install
+npm install react-circular-progressbar
+npm install jspdf html2canvas
+
+## Iniciar la aplicación
+npm start
 
 ## Consideraciones para el Desarrollo
 
