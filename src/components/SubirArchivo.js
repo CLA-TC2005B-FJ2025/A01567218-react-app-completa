@@ -18,7 +18,6 @@ function SubirArchivo() {
   const [numRespuestas, setNumRespuestas] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Cargar historial guardado
   useEffect(() => {
     const savedHistory = localStorage.getItem('fileHistory');
     if (savedHistory) {
@@ -26,7 +25,6 @@ function SubirArchivo() {
     }
   }, []);
 
-  // Guardar historial automáticamente
   useEffect(() => {
     localStorage.setItem('fileHistory', JSON.stringify(fileHistory));
   }, [fileHistory]);
@@ -39,38 +37,67 @@ function SubirArchivo() {
     const file = event.target.files[0];
     if (file && validateExcel(file)) {
       setIsLoading(true);
-      console.log('Archivo seleccionado:', file.name);
       setFileName(file.name);
-      
-      // Simular un retraso de 5 segundos
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      
-      // Extraer información del nombre del archivo
-      const fileInfo = extractFileInfo(file.name);
-      setMateria(fileInfo.materia);
-      setGrupo(fileInfo.grupo);
-      setProfesor(fileInfo.profesor);
-      setFechaUpload(new Date().toLocaleDateString());
-      setNumPreguntas(fileInfo.numPreguntas || '');
-      setNumRespuestas(fileInfo.numRespuestas || '');
-      
-      addFileToHistory(file.name, fileInfo);
-      showSuccessModal();
-      setIsLoading(false);
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/subir_encuesta`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al subir el archivo');
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await fetchUploadedFileInfo(file.name);
+
+        showSuccessModal();
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Hubo un problema al procesar el archivo.');
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       alert('Por favor selecciona un archivo Excel válido (.xlsx o .xls)');
     }
   };
 
-  const extractFileInfo = (fileName) => {
-    // Valores predeterminados
-    return {
-      materia: 'Matemáticas I',
-      grupo: '1A',
-      profesor: 'José Luis Mejía',
-      numPreguntas: '13',
-      numRespuestas: '25'
-    };
+  const fetchUploadedFileInfo = async (archivoNombre) => {
+    try {
+      const [materiasRes, profesoresRes, preguntasRes, respuestasRes] = await Promise.all([
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/materias/nombres`),
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/profesores/nombres`),
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/total_preguntas`),
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/total_respuestas`)
+      ]);
+
+      const materias = await materiasRes.json();
+      const profesores = await profesoresRes.json();
+      const preguntas = await preguntasRes.json();
+      const respuestas = await respuestasRes.json();
+
+      setMateria(materias[0] || '');
+      setProfesor(profesores[0] || '');
+      setGrupo('1A');
+      setFechaUpload(new Date().toLocaleDateString());
+      setNumPreguntas(preguntas.total_preguntas || '');
+      setNumRespuestas(respuestas.total_respuestas || '');
+
+      addFileToHistory(archivoNombre, {
+        materia: materias[0] || '',
+        grupo: '1A',
+        profesor: profesores[0] || '',
+        numPreguntas: preguntas.total_preguntas || '',
+        numRespuestas: respuestas.total_respuestas || ''
+      });
+    } catch (error) {
+      console.error('Error al obtener datos:', error);
+    }
   };
 
   const validateExcel = (file) => {
@@ -99,24 +126,31 @@ function SubirArchivo() {
     const file = event.dataTransfer.files[0];
     if (file && validateExcel(file)) {
       setIsLoading(true);
-      console.log('Archivo soltado:', file.name);
       setFileName(file.name);
-      
-      // Simular un retraso de 5 segundos
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      
-      // Extraer información del nombre del archivo
-      const fileInfo = extractFileInfo(file.name);
-      setMateria(fileInfo.materia);
-      setGrupo(fileInfo.grupo);
-      setProfesor(fileInfo.profesor);
-      setFechaUpload(new Date().toLocaleDateString());
-      setNumPreguntas(fileInfo.numPreguntas || '');
-      setNumRespuestas(fileInfo.numRespuestas || '');
-      
-      addFileToHistory(file.name, fileInfo);
-      showSuccessModal();
-      setIsLoading(false);
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/subir_encuesta`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al subir el archivo');
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        await fetchUploadedFileInfo(file.name);
+
+        showSuccessModal();
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Hubo un problema al procesar el archivo.');
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       alert('Por favor suelta un archivo Excel válido (.xlsx o .xls)');
     }
@@ -129,8 +163,8 @@ function SubirArchivo() {
       materia: fileInfo.materia,
       grupo: fileInfo.grupo,
       profesor: fileInfo.profesor,
-      numPreguntas: numPreguntas,
-      numRespuestas: numRespuestas
+      numPreguntas: fileInfo.numPreguntas,
+      numRespuestas: fileInfo.numRespuestas
     };
     setFileHistory(prev => {
       const updated = [...prev, newEntry];
@@ -140,16 +174,12 @@ function SubirArchivo() {
 
   const showSuccessModal = () => {
     setShowModal(true);
-    setTimeout(() => {
-      setShowModal(false);
-    }, 2000);
+    setTimeout(() => setShowModal(false), 2000);
   };
 
   const showDeleteSuccessModal = () => {
     setShowDeleteModal(true);
-    setTimeout(() => {
-      setShowDeleteModal(false);
-    }, 2000);
+    setTimeout(() => setShowDeleteModal(false), 2000);
   };
 
   const handleDeleteFile = (indexToDelete) => {
@@ -157,27 +187,17 @@ function SubirArchivo() {
     showDeleteSuccessModal();
   };
 
-  // Historial filtrado por búsqueda
   const filteredHistory = fileHistory.filter(file =>
     file.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="page-background">
-      {showModal && (
-        <div className="modal-success">
-          <p>¡Archivo subido exitosamente!</p>
-        </div>
-      )}
-      {showDeleteModal && (
-        <div className="modal-delete">
-          <p>¡Archivo eliminado exitosamente!</p>
-        </div>
-      )}
+      {showModal && <div className="modal-success"><p>¡Archivo subido exitosamente!</p></div>}
+      {showDeleteModal && <div className="modal-delete"><p>¡Archivo eliminado exitosamente!</p></div>}
 
       <div className="main-cards-container">
         <div className="upload-container">
-          {/* Subir archivo */}
           <div className="upload-left">
             <h2>Subir un archivo</h2>
             <div
@@ -204,82 +224,23 @@ function SubirArchivo() {
                 disabled={isLoading}
               />
               {fileName && <p className="file-name">Archivo: {fileName}</p>}
-              {isLoading && (
-                <div className="loading-spinner">
-                  <div className="spinner"></div>
-                  <p>Procesando archivo...</p>
-                </div>
-              )}
+              {isLoading && <div className="loading-spinner"><div className="spinner"></div><p>Procesando archivo...</p></div>}
             </div>
           </div>
 
-          {/* Detalles del archivo */}
           <div className="upload-right">
             <h2>Detalles del archivo</h2>
             <div className="details-grid">
-              <div className="detail-item">
-                <label>Materia</label>
-                <input
-                  type="text"
-                  value={materia}
-                  onChange={(e) => setMateria(e.target.value)}
-                  placeholder="Materia"
-                  readOnly
-                />
-              </div>
-              <div className="detail-item">
-                <label>Grupo</label>
-                <input
-                  type="text"
-                  value={grupo}
-                  onChange={(e) => setGrupo(e.target.value)}
-                  placeholder="Grupo"
-                  readOnly
-                />
-              </div>
-              <div className="detail-item">
-                <label>Profesor</label>
-                <input
-                  type="text"
-                  value={profesor}
-                  onChange={(e) => setProfesor(e.target.value)}
-                  placeholder="Profesor"
-                  readOnly
-                />
-              </div>
-              <div className="detail-item">
-                <label>Fecha de subida</label>
-                <input
-                  type="text"
-                  value={fechaUpload}
-                  readOnly
-                />
-              </div>
-              <div className="detail-item">
-                <label>Número de preguntas</label>
-                <input
-                  type="number"
-                  value={numPreguntas}
-                  onChange={(e) => setNumPreguntas(e.target.value)}
-                  placeholder="Número de preguntas"
-                  readOnly
-                />
-              </div>
-              <div className="detail-item">
-                <label>Número de respuestas</label>
-                <input
-                  type="number"
-                  value={numRespuestas}
-                  onChange={(e) => setNumRespuestas(e.target.value)}
-                  placeholder="Número de respuestas"
-                  readOnly
-                />
-              </div>
+              <div className="detail-item"><label>Materia</label><input type="text" value={materia} readOnly /></div>
+              <div className="detail-item"><label>Grupo</label><input type="text" value={grupo} readOnly /></div>
+              <div className="detail-item"><label>Profesor</label><input type="text" value={profesor} readOnly /></div>
+              <div className="detail-item"><label>Fecha de subida</label><input type="text" value={fechaUpload} readOnly /></div>
+              <div className="detail-item"><label>Número de preguntas</label><input type="number" value={numPreguntas} readOnly /></div>
+              <div className="detail-item"><label>Número de respuestas</label><input type="number" value={numRespuestas} readOnly /></div>
             </div>
           </div>
         </div>
 
-        {/* Historial de archivos */}
         <div className="history-card">
           <h2>Historial de archivos</h2>
           <input
@@ -294,21 +255,14 @@ function SubirArchivo() {
               <div key={index} className="history-item">
                 <div className="history-info">
                   <span className="file-name">{file.name}</span>
-                  <span className="file-date">
-                    {new Date(file.date).toLocaleDateString()}
-                  </span>
+                  <span className="file-date">{new Date(file.date).toLocaleDateString()}</span>
                   <div className="file-details">
                     <span>{file.materia}</span>
                     <span>{file.grupo}</span>
                     <span>{file.profesor}</span>
                   </div>
                 </div>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteFile(index)}
-                >
-                  ×
-                </button>
+                <button className="delete-button" onClick={() => handleDeleteFile(index)}>×</button>
               </div>
             ))}
           </div>
