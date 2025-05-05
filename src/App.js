@@ -27,13 +27,6 @@ function App() {
             zIndex: -1
           }}></div>
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/inicio" element={<PrivateRoute><PrivateLayout><MenuPage /></PrivateLayout></PrivateRoute>} />
-            <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
-            <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
-            <Route path="/encuestas" element={<PrivateRoute><PrivateLayout><Encuestas /></PrivateLayout></PrivateRoute>} />
-            <Route path="/profesor" element={<Profesor />} />
-
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/inicio" element={<PrivateRoute><PrivateLayout><MenuPage /></PrivateLayout></PrivateRoute>} />
