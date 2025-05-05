@@ -1,6 +1,6 @@
 # Pre-requisitos
 - Se requiere el servicio web del repositorio: ServiciosWebEquipo-1 https://github.com/CLA-TC2005B-FJ2025/ServiciosWebEquipo-1
-- Modifica el archivo .env.development para configurar la variable REACT_APP_API_BASE_URL a tus necesidades
+- Modificar el archivo .env.development para configurar la variable REACT_APP_API_BASE_URL con el link del puerto de ServiciosWebEquipo-1
 
 ##  Tecnologías Utilizadas
 
