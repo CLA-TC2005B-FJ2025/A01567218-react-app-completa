@@ -19,7 +19,7 @@ function LoginPage() {
     try {
       const success = await login(username, password);
       if (success) {
-        setShowVideo(true); // Mostrar video
+        setShowVideo(true);
       } else {
         setError('Usuario o password incorrectos');
       }
@@ -37,7 +37,7 @@ function LoginPage() {
           src="/img/videointroecoa.mp4"
           autoPlay
           muted
-          onEnded={() => navigate('/menu')}
+          onEnded={() => navigate('/inicio')}
           className="intro-video"
         />
       </div>
