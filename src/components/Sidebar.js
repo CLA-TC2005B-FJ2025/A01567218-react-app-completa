@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaHome, FaList, FaPlusCircle, FaEdit, FaTrash, FaSignOutAlt, FaFileUpload, FaAddressBook, FaFileAlt, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import './Sidebar.css';
 import { HiUserAdd, HiDocumentAdd, HiClipboardList } from "react-icons/hi";
 import { HiHome } from "react-icons/hi2";
