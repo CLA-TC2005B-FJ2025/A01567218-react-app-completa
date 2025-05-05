@@ -175,139 +175,143 @@ function SubirArchivo() {
         </div>
       )}
 
-      <div className="upload-container">
-        {/* Subir archivo */}
-        <div className="upload-left">
-          <h2>Subir un archivo</h2>
-          <div
-            className={`upload-area ${isDragging ? 'dragging' : ''}`}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-          >
-            <FaFileExcel className="upload-icon" />
-            <p>Arrastra y suelta un archivo Excel, ó selecciónalo:</p>
-            <button 
-              className="select-file-button" 
-              onClick={handleButtonClick}
-              disabled={isLoading}
+      <div className="main-cards-container">
+        <div className="upload-container">
+          {/* Subir archivo */}
+          <div className="upload-left">
+            <h2>Subir un archivo</h2>
+            <div
+              className={`upload-area ${isDragging ? 'dragging' : ''}`}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
             >
-              {isLoading ? 'Cargando...' : 'Seleccionar archivo'}
-            </button>
-            <input
-              type="file"
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-              accept=".xlsx, .xls"
-              onChange={handleFileChange}
-              disabled={isLoading}
-            />
-            {fileName && <p className="file-name">Archivo: {fileName}</p>}
-            {isLoading && (
-              <div className="loading-spinner">
-                <div className="spinner"></div>
-                <p>Procesando archivo...</p>
+              <FaFileExcel className="upload-icon" />
+              <p>Arrastra y suelta un archivo Excel, ó selecciónalo:</p>
+              <button 
+                className="select-file-button" 
+                onClick={handleButtonClick}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Cargando...' : 'Seleccionar archivo'}
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                accept=".xlsx, .xls"
+                onChange={handleFileChange}
+                disabled={isLoading}
+              />
+              {fileName && <p className="file-name">Archivo: {fileName}</p>}
+              {isLoading && (
+                <div className="loading-spinner">
+                  <div className="spinner"></div>
+                  <p>Procesando archivo...</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Detalles del archivo */}
+          <div className="upload-right">
+            <h2>Detalles del archivo</h2>
+            <div className="details-grid">
+              <div className="detail-item">
+                <label>Materia</label>
+                <input
+                  type="text"
+                  value={materia}
+                  onChange={(e) => setMateria(e.target.value)}
+                  placeholder="Materia"
+                  readOnly
+                />
               </div>
-            )}
-          </div>
-        </div>
-
-        {/* Detalles del archivo */}
-        <div className="upload-right">
-          <h2>Detalles del archivo</h2>
-          <div className="details-grid">
-            <div className="detail-item">
-              <label>Materia</label>
-              <input
-                type="text"
-                value={materia}
-                onChange={(e) => setMateria(e.target.value)}
-                placeholder="Materia"
-                readOnly
-              />
-            </div>
-            <div className="detail-item">
-              <label>Grupo</label>
-              <input
-                type="text"
-                value={grupo}
-                onChange={(e) => setGrupo(e.target.value)}
-                placeholder="Grupo"
-                readOnly
-              />
-            </div>
-            <div className="detail-item">
-              <label>Profesor</label>
-              <input
-                type="text"
-                value={profesor}
-                onChange={(e) => setProfesor(e.target.value)}
-                placeholder="Profesor"
-                readOnly
-              />
-            </div>
-            <div className="detail-item">
-              <label>Fecha de subida</label>
-              <input
-                type="text"
-                value={fechaUpload}
-                readOnly
-              />
-            </div>
-            <div className="detail-item">
-              <label>Número de preguntas</label>
-              <input
-                type="number"
-                value={numPreguntas}
-                onChange={(e) => setNumPreguntas(e.target.value)}
-                placeholder="Número de preguntas"
-              />
-            </div>
-            <div className="detail-item">
-              <label>Número de respuestas</label>
-              <input
-                type="number"
-                value={numRespuestas}
-                onChange={(e) => setNumRespuestas(e.target.value)}
-                placeholder="Número de respuestas"
-              />
+              <div className="detail-item">
+                <label>Grupo</label>
+                <input
+                  type="text"
+                  value={grupo}
+                  onChange={(e) => setGrupo(e.target.value)}
+                  placeholder="Grupo"
+                  readOnly
+                />
+              </div>
+              <div className="detail-item">
+                <label>Profesor</label>
+                <input
+                  type="text"
+                  value={profesor}
+                  onChange={(e) => setProfesor(e.target.value)}
+                  placeholder="Profesor"
+                  readOnly
+                />
+              </div>
+              <div className="detail-item">
+                <label>Fecha de subida</label>
+                <input
+                  type="text"
+                  value={fechaUpload}
+                  readOnly
+                />
+              </div>
+              <div className="detail-item">
+                <label>Número de preguntas</label>
+                <input
+                  type="number"
+                  value={numPreguntas}
+                  onChange={(e) => setNumPreguntas(e.target.value)}
+                  placeholder="Número de preguntas"
+                  readOnly
+                />
+              </div>
+              <div className="detail-item">
+                <label>Número de respuestas</label>
+                <input
+                  type="number"
+                  value={numRespuestas}
+                  onChange={(e) => setNumRespuestas(e.target.value)}
+                  placeholder="Número de respuestas"
+                  readOnly
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Historial de archivos */}
-      <div className="history-card">
-        <h2>Historial de archivos</h2>
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Buscar archivo..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-        <div className="history-list">
-          {filteredHistory.length === 0 ? (
-            <p>No hay archivos que coincidan.</p>
-          ) : (
-            filteredHistory.map((file, index) => (
+        {/* Historial de archivos */}
+        <div className="history-card">
+          <h2>Historial de archivos</h2>
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Buscar archivo..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <div className="history-list">
+            {filteredHistory.map((file, index) => (
               <div key={index} className="history-item">
                 <div className="history-info">
                   <span className="file-name">{file.name}</span>
-                  <span className="file-date">{new Date(file.date).toLocaleDateString()}</span>
+                  <span className="file-date">
+                    {new Date(file.date).toLocaleDateString()}
+                  </span>
+                  <div className="file-details">
+                    <span>{file.materia}</span>
+                    <span>{file.grupo}</span>
+                    <span>{file.profesor}</span>
+                  </div>
                 </div>
-                <div className="file-details">
-                  <span>{file.materia}</span>
-                  <span>{file.grupo}</span>
-                  <span>{file.profesor}</span>
-                  <span>Preguntas: {file.numPreguntas}</span>
-                  <span>Respuestas: {file.numRespuestas}</span>
-                </div>
-                <button className="delete-button" onClick={() => handleDeleteFile(index)}>🗑️</button>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteFile(index)}
+                >
+                  ×
+                </button>
               </div>
-            ))
-          )}
+            ))}
+          </div>
         </div>
       </div>
     </div>

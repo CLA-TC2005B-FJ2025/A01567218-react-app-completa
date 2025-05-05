@@ -28,7 +28,6 @@ function MenuPage() {
     { nombre: 'Estadisticas_Generales.xlsx', fecha: '05/03/2024' }
   ];
 
-  // Obtener la fecha actual en formato "día de mes de año"
   const fecha = new Date().toLocaleDateString('es-ES', {
     day: 'numeric',
     month: 'long',
@@ -44,10 +43,10 @@ function MenuPage() {
 
       <div className="menu-content">
         <div className="info-general-container">
-          <h2 className="info-general-titulo">Información General</h2>
+          <h2 className="info-general-titulo">Información general</h2>
           <p className="info-general-fecha">Para el {fecha}, las estadísticas de las encuestas son las siguientes:</p>
           
-          {/* Tarjeta de perfil */}
+          {/* tarjeta de perfil */}
           <div className="card-perfil">
             <div className="perfil-info">
               <div className="perfil-icono">
@@ -61,7 +60,7 @@ function MenuPage() {
           </div>
 
           <div className="cards-container">
-            {/* Tarjeta de encuestas completadas */}
+            {/* tarjeta de encuestas completadas */}
             <div className="card-encuestas">
               <div className="circular-chart">
                 <CircularProgressbar
@@ -87,7 +86,7 @@ function MenuPage() {
               </div>
             </div>
 
-            {/* Tarjeta de encuestas faltantes */}
+            {/* tarjeta de encuestas faltantes */}
             <div className="card-encuestas">
               <div className="circular-chart">
                 <CircularProgressbar
@@ -113,7 +112,7 @@ function MenuPage() {
               </div>
             </div>
 
-            {/* Tarjeta de manejo de archivos */}
+            {/*tarjeta de manejo de archivos */}
             <div className="card-archivos">
               <h3 className="archivos-titulo">Manejo de archivos</h3>
               <div className="archivos-lista">
@@ -134,5 +133,4 @@ function MenuPage() {
     </div>
   );
 }
-
 export default MenuPage;

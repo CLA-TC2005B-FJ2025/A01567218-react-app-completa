@@ -1,6 +1,18 @@
 .page-background {
   padding: 20px;
   min-height: 100vh;
+  background: linear-gradient(to right, #1e3a8a, #6b21a8);
+}
+
+.main-cards-container {
+  background: rgba(255, 255, 255, 0.33);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 650px;
 }
 
 .upload-container {

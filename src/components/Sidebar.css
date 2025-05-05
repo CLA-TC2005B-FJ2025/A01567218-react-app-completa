@@ -16,10 +16,9 @@
 
 .sidebar-content {
   flex: 1;
-  padding-bottom: 120px; /* Espacio para la sección de usuario */
+  padding-bottom: 120px; /*user*/
 }
 
-/* animación */
 @keyframes slideIn {
   0% {
     transform: translateX(-100%);
@@ -50,8 +49,8 @@
   font-size: 16px;
   padding: 10px 15px;
   display: flex; 
-  align-items: center; /*icono y text*/
-  gap: 15px; /*espacio entre ícono y text*/
+  align-items: center; /*icon y text*/
+  gap: 15px; /*espacio entre icon y text*/
   text-align: left;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -123,9 +122,7 @@ font-size: 50px;
   font-size: 35px;
 }
 
-/* Estilos para la sección de usuario */
 .user-section {
-  padding: 25px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0;
   width: 70%;
@@ -141,12 +138,12 @@ font-size: 50px;
 .user-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   color: #ffffff;
 }
 
 .user-icon {
-  font-size: 24px;
+  font-size: 26px;
   color: #ffffff;
 }
 

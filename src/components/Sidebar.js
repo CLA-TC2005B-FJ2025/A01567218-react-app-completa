@@ -21,13 +21,13 @@ function Sidebar() {
       <div className="sidebar-content">
         <ul className="space-y-2 mt-6">
           <li>
-            <Link to="/menu" className={`sidebar-link ${location.pathname === '/menu' ? 'active' : ''}`}>
+            <Link to="/inicio" className={`sidebar-link ${location.pathname === '/inicio' ? 'active' : ''}`}>
               <HiHome className="home-icon" />
               Inicio
             </Link>
           </li>
           <li>
-            <Link to="/dashboardresultados" className={`sidebar-link ${location.pathname === '/dashboardresultados' ? 'active' : ''}`}>
+            <Link to="/encuestas" className={`sidebar-link ${location.pathname === '/encuestas' ? 'active' : ''}`}>
               <HiClipboardList className="sidebar-icon" />
               Encuestas
             </Link>
