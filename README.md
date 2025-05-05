@@ -13,9 +13,11 @@
 * **Node.js:** Entorno en tiempo de ejecución multiplataforma para la capa del servidor basado en JavaScript.
 
 ## Instalar dependencias
-* npm install
-* npm install react-circular-progressbar
-* npm install jspdf html2canvas
+```sh
+npm install
+npm install react-circular-progressbar
+npm install jspdf html2canvas
+```
 
 ## Iniciar la aplicación
 npm start
