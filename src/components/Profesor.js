@@ -6,6 +6,22 @@ import 'react-circular-progressbar/dist/styles.css';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
+const handleDownloadPDF = async () => {
+  const input = document.querySelector('.resultados-page');
+  const canvas = await html2canvas(input);
+  const imgData = canvas.toDataURL('image/png');
+  const pdf = new jsPDF('p', 'mm', 'a4');
+
+  const imgWidth = 210;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+  pdf.save('reporte_resultados.pdf');
+};
+
 function ResultadosPage() {
   const [data, setData] = useState([
     { pregunta: "Claridad", promedio: 8.5 },
@@ -50,6 +66,11 @@ function ResultadosPage() {
     <div className="resultados-page">
       <Sidebar />
       <Topbar />
+      <div className="descarga-container">
+        <button onClick={handleDownloadPDF} className="descarga-boton">
+          Descargar como PDF
+          </button>
+          </div>
       
       <div className="grafica-container">
         <div className="grafica-izquierda">
@@ -83,16 +104,14 @@ function ResultadosPage() {
 
         <div className="estadisticas">
           <h3>Calificación más alta:</h3>
-          <p>9.5</p>
+          <p>9</p>
 
           <h3>Calificación más baja:</h3>
-          <p>4.2</p>
+          <p>4</p>
 
-          <h3>Calificación más repetida:</h3>
-          <p>8.5</p>
+          <h3>Promedio por este grupo:</h3>
+          <p>8</p>
 
-          <h3>Calificación menos repetida:</h3>
-          <p>9.2</p>
         </div>
       </div>
 

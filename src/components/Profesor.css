@@ -164,3 +164,24 @@ select {
   font-size: 16px;
   color: #374151;
 }
+
+.descarga-container {
+  margin: 20px;
+  text-align: right;
+}
+
+.descarga-boton {
+  background-color: #1814A9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.descarga-boton:hover {
+  background-color: #3a37c3;
+}
