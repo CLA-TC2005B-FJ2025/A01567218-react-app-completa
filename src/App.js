@@ -4,10 +4,6 @@ import LoginPage from './components/LoginPage';
 import MenuPage from './components/MenuPage';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
-import ListaPersonajes from './components/ListaPersonajes';
-import CrearPersonaje from './components/CrearPersonaje';
-import ActualizarPersonaje from './components/ActualizarPersonaje';
-import EliminarPersonaje from './components/EliminarPersonaje';
 import PrivateLayout from './components/PrivateLayout';
 import SubirArchivo from './components/SubirArchivo';
 import AñadirPerfil from './components/AñadirPerfil';
@@ -33,10 +29,6 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/inicio" element={<PrivateRoute><PrivateLayout><MenuPage /></PrivateLayout></PrivateRoute>} />
-            <Route path="/listapersonajes" element={<PrivateRoute><PrivateLayout><ListaPersonajes /></PrivateLayout></PrivateRoute>} />
-            <Route path="/crearpersonaje" element={<PrivateRoute><PrivateLayout><CrearPersonaje /></PrivateLayout></PrivateRoute>} />
-            <Route path="/actualizarpersonaje" element={<PrivateRoute><PrivateLayout><ActualizarPersonaje /></PrivateLayout></PrivateRoute>} />
-            <Route path="/eliminarpersonaje" element={<PrivateRoute><PrivateLayout><EliminarPersonaje /></PrivateLayout></PrivateRoute>} />
             <Route path="/subirarchivo" element={<PrivateRoute><PrivateLayout><SubirArchivo /></PrivateLayout></PrivateRoute>} />
             <Route path="/añadirperfil" element={<PrivateRoute><PrivateLayout><AñadirPerfil /></PrivateLayout></PrivateRoute>} />
             <Route path="/encuestas" element={<PrivateRoute><PrivateLayout><Encuestas /></PrivateLayout></PrivateRoute>} />
